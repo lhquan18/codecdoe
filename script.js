@@ -26,8 +26,14 @@ noButton.addEventListener("click", function () {
   }
 });
 
+noButton.addEventListener("mouseenter", function () {
+  if (noCount === MAX_IMAGES) {
+    moveNoButtonRandomly();
+  }
+});
+
 function handleYesClick() {
-  titleElement.innerHTML = "Anh iu bé ,Anh hứa hongg làm bé buồn nữa đouuu :3";
+  titleElement.innerHTML = "Anh iu bé ,mai có mặt PQ ra phường nhée :3";
   buttonsContainer.classList.add("hidden");
   changeImage("yes");
 }
@@ -43,11 +49,11 @@ function resizeYesButton() {
 function generateMessage(noCount) {
   const messages = [
     "Không Bao Giờ",
-    "Anh bicc lỗi rồi ạa",
-    "Mong bé tha lỗi choo anhh :((",
-    "Anhh saii rồi , anhh đáng trách ạ",
-    "Bé đừng giận anhh nữa nhoo",
-    "Anhhh iu bé nhắm nhunnn đóoooo",
+    "Đừng mơ",
+    "Toy cưới em trai anhh",
+    "Đợi 30 tuổi đii",
+    "Toy cưới thằng khácccc",
+    "Anh cút điii",
   ];
 
   const messageIndex = Math.min(noCount, messages.length - 1);
@@ -60,4 +66,19 @@ function changeImage(image) {
 
 function updateNoButtonText() {
   noButton.innerHTML = generateMessage(noCount);
+}
+
+function moveNoButtonRandomly() {
+  // Lấy kích thước của màn hình và vị trí của nút
+  const screenWidth = window.innerWidth;
+  const screenHeight = window.innerHeight;
+
+  // Tạo vị trí ngẫu nhiên cho nút
+  const randomX = Math.random() * (screenWidth - noButton.offsetWidth);
+  const randomY = Math.random() * (screenHeight - noButton.offsetHeight);
+
+  // Cập nhật vị trí của nút
+  noButton.style.position = 'absolute';
+  noButton.style.left = `${randomX}px`;
+  noButton.style.top = `${randomY}px`;
 }
